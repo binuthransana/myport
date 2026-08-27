@@ -18,12 +18,12 @@ export default function SynthwaveBackground({ hue = 0 }) {
         {Array.from({ length: 60 }).map((_, i) => {
           const top = Math.random() * 55;
           const left = Math.random() * 100;
-          const size = Math.random() * 1.5 + 0.5;
+          const size = Math.random() * 2 + 1;
           const delay = Math.random() * 4;
           return (
             <span
               key={i}
-              className="absolute rounded-full bg-white animate-twinkle"
+              className="absolute rounded-full bg-white drop-shadow-[0_0_5px_rgba(255,255,255,1)] animate-twinkle"
               style={{
                 top: `${top}%`,
                 left: `${left}%`,

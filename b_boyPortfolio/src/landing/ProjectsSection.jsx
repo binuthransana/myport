@@ -22,23 +22,20 @@ import React from "react";
  */
 const placeholderProjects = [
   {
-    title: "Project One",
-    description: "A short one- or two-line description of what this project does and the problem it solves.",
-    tags: ["React", "Tailwind"],
-    link: "#",
+    title: "Mini Satellite Antenna Rotator (MSAR)",
+    description: "The MSAR is a cost-effective, automated hardware system that tracks moving satellites in real-time, solving the tedious manual adjustments and signal drops of static setups.",
+    tags: ["Hardware", "Arduino"],
+    link: "https://msar-tracker.firebaseapp.com/",
   },
+
   {
-    title: "Project Two",
-    description: "A short one- or two-line description of what this project does and the problem it solves.",
-    tags: ["Node", "MongoDB"],
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    description: "A short one- or two-line description of what this project does and the problem it solves.",
-    tags: ["Next.js", "API"],
-    link: "#",
-  },
+    title: "Mini Satellite Antenna Rotator (MSAR)",
+    description: "The MSAR is a cost-effective, automated hardware system that tracks moving satellites in real-time, solving the tedious manual adjustments and signal drops of static setups.",
+    tags: ["Hardware", "Arduino"],
+    link: "https://msar-tracker.firebaseapp.com/",
+  }
+
+
 ];
 
 export default function ProjectsSection({ projects = placeholderProjects }) {

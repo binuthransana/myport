@@ -1,8 +1,7 @@
 import React from "react";
 
 const placeholderBio = [
-  "Hi, I'm Binuth Ransana — a developer who loves building clean, purposeful interfaces with a bit of personality. I enjoy turning ideas into interactive experiences, from small UI details to full end-to-end applications.",
-  "I'm currently focused on front-end development with React and Tailwind CSS, and I'm always exploring new ways to blend solid engineering with distinctive visual design — like this synthwave-themed portfolio you're looking at right now.",
+  "I am an aspiring Computer Science undergraduate at the General Sir John Kotelawala Defence University, Sri Lanka, with a strong passion for software development and the tech industry. I thrive on learning and applying emerging technologies to solve complex problems, transforming pure logic into seamless, high-performance digital experiences.",
 ];
 
 const placeholderSkills = [
@@ -22,7 +21,7 @@ export default function AboutSection({
   return (
     <section
       id="about"
-      className="relative z-10 min-h-screen w-full flex flex-col items-center justify-center px-6 py-24"
+      className=" relative z-10 min-h-screen w-full flex flex-col items-center justify-center px-6 py-24"
     >
       <h2
         className="text-4xl sm:text-5xl font-bold tracking-widest uppercase mb-14 text-center"
@@ -37,13 +36,13 @@ export default function AboutSection({
         About
       </h2>
 
-      {/* NEW: Frosted Glass Wrapper */}
-      <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12 items-center bg-[#1a0b3d]/70 backdrop-blur-md border border-[#00fff5]/30 rounded-2xl p-8 sm:p-12 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+     {/* NEW: Frosted Glass Wrapper with Hover Effects */}
+      <div className="group w-full max-w-5xl grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12 items-center bg-[#1a0b3d]/70 backdrop-blur-md border border-[#00fff5]/30 rounded-2xl p-8 sm:p-12 shadow-[0_0_40px_rgba(0,0,0,0.5)] transition-all duration-500 hover:-translate-y-2 hover:border-[#00fff5] hover:shadow-[0_0_40px_rgba(0,255,245,0.4)]">
         
         {/* Photo frame */}
         <div className="mx-auto md:mx-0">
           <div
-            className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden border-2"
+            className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden border-2 transition-all duration-500 group-hover:scale-105"
             style={{
               borderColor: "#00fff5",
               boxShadow:

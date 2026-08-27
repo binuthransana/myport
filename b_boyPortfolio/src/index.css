@@ -1,7 +1,19 @@
 @import "tailwindcss";
 
 
+/* GLOBAL TEXT SELECTION */
+::selection {
+  background-color: #ff2e88; /* Your theme's hot pink */
+  color: #ffffff;            /* Bright white text */
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Adds a subtle glow to the highlighted text */
+}
 
+/* For Firefox compatibility */
+::-moz-selection {
+  background-color: #ff2e88;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
 
 
 
@@ -41,11 +53,19 @@
 
   /* NEW: Shooting Star */
   --animate-shooting-star: shooting-star 6s linear infinite;
+
+  --animate-logo-flicker: logo-flicker 5s ease-in-out infinite;
+
+  --animate-role-flicker: role-flicker 0.7s steps(1, end);
+
+  /* Keep your existing animations... */
+  --animate-underline-sweep: underline-sweep 2s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
 }
 
 @font-face {
   font-family: 'Ethnocentric-Regular';
-  src: url('C:\Users\ASUS\Desktop\myport\b_boyPortfolio\src\assets\font\Ethnocentric-Regular.otf') format('truetype');
+  src: url('/fonts/Ethnocentric-Regular.otf') format('truetype');
   font-weight: normal;
   font-style: italic; /* The font in your image is slanted */
 }
@@ -128,6 +148,58 @@
   }
 }
 
+@keyframes logo-flicker {
+  0%, 100% { opacity: 1; }
+  8% { opacity: 0.6; }
+  10% { opacity: 1; }
+  20% { opacity: 0.85; }
+  22% { opacity: 1; }
+}
+
+@keyframes role-flicker {
+  0% { 
+    opacity: 0; 
+    color: #fff; 
+    text-shadow: none; 
+  }
+  4% { 
+    opacity: 1; 
+    color: #00fff5; /* Flash Cyan */
+    text-shadow: 0 0 20px #00fff5, 0 0 40px #00fff5; 
+  }
+  8% { 
+    opacity: 0.2; 
+  }
+  12% { 
+    opacity: 1; 
+    color: #ff2e88; /* Flash Hot Pink */
+    text-shadow: 0 0 20px #ff2e88, 0 0 40px #ff2e88; 
+  }
+  18% { 
+    opacity: 0.3; 
+  }
+  22% { 
+    opacity: 1; 
+    color: #00fff5; /* Settle on Cyan */
+    text-shadow: 0 0 8px rgba(0,255,245,0.6); 
+  }
+  100% { 
+    opacity: 1; 
+    color: #00fff5; 
+    text-shadow: 0 0 8px rgba(0,255,245,0.6); 
+  }
+}
+
+@keyframes underline-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
 /* =========================================
    CUSTOM UTILITIES & BASE STYLES
    ========================================= */
@@ -143,4 +215,15 @@ body {
 .text-glow-cyan {
   text-shadow: 0 0 5px #00f3ff, 0 0 15px #00f3ff, 0 0 30px #00f3ff;
 }
-html { scroll-behavior: smooth; }
+/* =========================================
+   SNAP SCROLLING PHYSICS
+   ========================================= */
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}

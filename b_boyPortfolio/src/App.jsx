@@ -2,30 +2,33 @@ import React, { useState } from 'react';
 import Header from './landing/Header';
 import SynthwaveBackground from './landing/SynthwaveBackground';
 import LoadingScreen from './landing/LoadingScreen';
-import ProjectsSection from './landing/ProjectsSection';
-import { useActiveSection } from './landing/useActiveSection'; // Import your new hook
 import AboutSection from './landing/AboutSection';
+import SkillsSection from './landing/SkillsSection';
+import ProjectsSection from './landing/ProjectsSection';
+import { useActiveSection } from './hooks/useActiveSection';
+import RotatingTagline from './landing/RotatingTagline';
+import ContactSection from './landing/ContactSection';
+import CursorTrail from './landing/CursorTrail';
+import NavDots from './landing/NavDots';
+import Footer from './landing/Footer';
 
 // Define your color shifts here! 
-// 0 is default (pink/cyan), -40 shifts to purple/blue, 30 shifts to orange/gold
 const sectionHues = {
   home: 0, 
-  about: -15,      
+  about: -15,  
+  skills: -25,  
   projects: -40, 
-  // contact: 30, // We will uncomment this when we build the contact section!
+  contact: 20, 
 };
 
 function App() {
   const [loading, setLoading] = useState(true);
 
-  // Watch these specific IDs on the page
-  const activeSection = useActiveSection(['home', 'about', 'projects']);
-
+  // FIXED: Added 'skills' to the array of watched sections
+  const activeSection = useActiveSection(['home', 'about', 'skills', 'projects', 'contact']);
   
   // Look up the hue for the active section, default to 0
   const activeHue = sectionHues[activeSection] || 0;
-
-  
 
   return (
     <div className="relative min-h-screen overflow-hidden text-white bg-transparent">
@@ -33,33 +36,54 @@ function App() {
       {/* Background layer now receives the dynamic hue */}
       <SynthwaveBackground hue={activeHue} />
 
+      {/* FIXED: Added the CursorTrail right above the main content! */}
+      <CursorTrail maxPoints={30} fadeSpeed={0.04} baseWidth={6} />
+
       {loading && <LoadingScreen onFinish={() => setLoading(false)} />}
 
-      <div className={`relative z-10 flex flex-col items-center min-h-screen transition-opacity duration-700 ${loading ? "opacity-0" : "opacity-100"}`}>
+      <div className={`relative z-10 flex flex-col items-center min-h-screen transition-opacity space-y-6 -mt-6 px-4 sm:px-8 pb-12 duration-700 ${loading ? "opacity-0" : "opacity-100"}`}>
         
         <Header />
+
+        {/* =========================================
+            RIGHT-SIDE DOT NAVIGATION
+            ========================================= */}
+        <NavDots/>
         
-        {/* HERO SECTION - Now wrapped in an ID so the observer can see it */}
+        {/* HERO SECTION */}
         <section id="home" className="flex flex-col items-center justify-center min-h-screen w-full text-center space-y-6 pt-24">
           <h2 className="font-airstrike text-synth-cyan text-2xl tracking-[0.3em] uppercase">
             Welcome 
           </h2>
           
           <h1 className="font-airstrike text-6xl md:text-8xl mb-2 z-10 tracking-wide drop-shadow-2xl bg-gradient-to-b from-synth-yellow to-synth-pink text-transparent bg-clip-text italic">
-  BINUTH RANSANA
-</h1>
+            BINUTH RANSANA
+          </h1>
           
-          <p className="font-orbitron text-gray-300 text-lg md:text-xl max-w-lg mx-auto">
-            Full Stack Developer // Cybernetic Architect // Synthwave Enthusiast
-          </p>
-
+          <RotatingTagline />
           
         </section>
-
-        {/* PROJECTS SECTION */}
+        
+        {/* ABOUT SECTION */}
         <AboutSection/>
 
+        {/* SKILLS SECTION */}
+        <SkillsSection />
+
+        {/* PROJECTS SECTION */}
         <ProjectsSection />
+
+        {/* CONTACT SECTION */}
+        <ContactSection 
+          email="binuthran@gmail.com"
+          phone="+94 71 571 1322"
+          socials={{
+            github: "https://github.com/yourhandle",
+            linkedin: "https://linkedin.com/in/yourhandle",
+            twitter: "https://x.com/yourhandle",
+          }}
+        /> 
+        <Footer/>
 
       </div>
     </div>
