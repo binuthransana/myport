@@ -40,28 +40,34 @@ export default function AboutSection({
       <div className="group w-full max-w-5xl grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12 items-center bg-[#1a0b3d]/70 backdrop-blur-md border border-[#00fff5]/30 rounded-2xl p-8 sm:p-12 shadow-[0_0_40px_rgba(0,0,0,0.5)] transition-all duration-500 hover:-translate-y-2 hover:border-[#00fff5] hover:shadow-[0_0_40px_rgba(0,255,245,0.4)]">
         
         {/* Photo frame */}
-        <div className="mx-auto md:mx-0">
-          <div
-            className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden border-2 transition-all duration-500 group-hover:scale-105"
-            style={{
-              borderColor: "#00fff5",
-              boxShadow:
-                "0 0 20px 4px rgba(0,255,245,0.5), 0 0 40px 10px rgba(255,46,136,0.25)",
-            }}
-          >
-            {photo ? (
-              <img
-                src={photo}
-                alt="Binuth Ransana"
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-[#0d0221] text-[#00fff5] text-5xl font-bold">
-                BR
-              </div>
-            )}
-          </div>
-        </div>
+       <div className="mx-auto md:mx-0">
+  <div
+    className="group relative w-48 h-64 sm:w-56 sm:h-72 rounded-xl overflow-hidden border-2 transition-all duration-500 hover:scale-105 cursor-pointer"
+    style={{
+      borderColor: "#00fff5",
+      boxShadow:
+        "0 0 20px 4px rgba(0,255,245,0.5), 0 0 40px 10px rgba(255,46,136,0.25)",
+    }}
+  >
+    {photo ? (
+      <>
+        {/* Base Image: Desaturated and contrast-boosted */}
+        <img
+          src={photo}
+          alt="Binuth Ransana"
+          className="w-full h-full object-cover object-[50%_20%] grayscale-[80%] contrast-125 brightness-90 transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100"
+        />
+        
+        {/* Neon Tint Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#00fff5]/40 to-[#ff2e88]/40 mix-blend-color pointer-events-none transition-opacity duration-500 group-hover:opacity-0" />
+      </>
+    ) : (
+      <div className="w-full h-full flex items-center justify-center bg-[#0d0221] text-[#00fff5] text-5xl font-bold">
+        BR
+      </div>
+    )}
+  </div>
+</div>
 
         {/* Bio + skills */}
         <div className="flex flex-col gap-6 text-center md:text-left">

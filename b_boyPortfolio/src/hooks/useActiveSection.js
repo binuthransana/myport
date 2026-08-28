@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
  * Observes an array of section IDs and returns the ID of the section
  * currently most visible on the screen.
  */
-export function useActiveSection(sectionIds, threshold = 0.5) {
+export function useActiveSection(sectionIds, threshold = 0.25) {
   const [activeSection, setActiveSection] = useState(sectionIds[0]);
 
   useEffect(() => {

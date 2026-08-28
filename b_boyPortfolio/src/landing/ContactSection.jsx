@@ -1,39 +1,7 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 
-/**
- * ContactSection
- * A "Contact" section for the one-page scroll site — social links,
- * a click-to-call phone number, and a working contact form that
- * sends email directly (no backend, no leaving the page) via EmailJS.
- *
- * =====================================================================
- * SETUP REQUIRED — EmailJS (free tier is enough for a portfolio)
- * =====================================================================
- * 1. npm install @emailjs/browser
- * 2. Create a free account at https://www.emailjs.com
- * 3. Add an Email Service (e.g. connect your Gmail) -> copy the SERVICE_ID
- * 4. Create an Email Template with variables {{from_name}}, {{from_email}},
- *    {{message}} -> copy the TEMPLATE_ID
- * 5. Account -> General -> copy your PUBLIC_KEY
- * 6. Paste all three into the constants below.
- *
- * Until you fill these in, the form will show an error toast when
- * submitted — everything else in this component works immediately.
- *
- * Usage in App.jsx:
- *   <AboutSection />
- *   <ProjectsSection />
- *   <ContactSection
- *     email="you@example.com"
- *     phone="+94 71 234 5678"
- *     socials={{
- *       github: "https://github.com/yourhandle",
- *       linkedin: "https://linkedin.com/in/yourhandle",
- *       twitter: "https://x.com/yourhandle",
- *     }}
- *   />
- */
+
 
 // TODO: replace with your own EmailJS IDs (see setup notes above)
 const SERVICE_ID = "service_vs9r0yz";
@@ -74,7 +42,7 @@ export default function ContactSection({
   phone = "+94 71 571 1322",
   socials = {
     github: "https://github.com/binuthransana",
-    linkedin: "https://www.linkedin.com/in/binuth-ransana-803058291/",
+    linkedin: "https://www.linkedin.com/in/binuth-ransana-/",
     twitter: "https://x.com/BinuthR",
   },
 }) {
@@ -131,7 +99,13 @@ export default function ContactSection({
 
       <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left: direct info + socials */}
-        <div className="flex flex-col gap-6 justify-center">
+        <div
+          className="flex flex-col gap-6 justify-center rounded-2xl border border-[#00fff5]/40 bg-[#1a0b3d]/40 backdrop-blur-xl p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(0,255,245,0.3)]"
+          style={{
+            boxShadow:
+              "0 8px 32px rgba(0,0,0,0.5), 0 0 30px rgba(0,255,245,0.1), inset 0 0 20px rgba(255,255,255,0.05)",
+          }}
+        >
           <p className="text-gray-300/90 leading-relaxed">
             Got a project in mind or just want to say hi? Reach out through
             any of these, or send a message directly from the form.
@@ -193,7 +167,11 @@ export default function ContactSection({
         {/* Right: direct email form */}
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-4 rounded-xl border border-[#ff2e88]/30 bg-[#1a0b3d]/60 backdrop-blur-sm p-6"
+          className="flex flex-col gap-5 rounded-2xl border border-[#ff2e88]/40 bg-[#1a0b3d]/40 backdrop-blur-xl p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,46,136,0.2)]"
+          style={{
+            boxShadow:
+              "0 8px 32px rgba(0,0,0,0.5), 0 0 30px rgba(255,46,136,0.1), inset 0 0 20px rgba(255,255,255,0.05)",
+          }}
         >
           <input
             type="text"
@@ -226,7 +204,7 @@ export default function ContactSection({
           <button
             type="submit"
             disabled={status === "sending"}
-            className="mt-2 py-3 rounded-lg font-semibold uppercase tracking-widest text-[#0d0221] transition-all duration-300 disabled:opacity-60"
+            className="cursor-pointer disabled:cursor-not-allowed mt-2 py-3 rounded-lg font-semibold uppercase tracking-widest text-[#0d0221] transition-all duration-300 disabled:opacity-60"
             style={{
               background: "linear-gradient(90deg, #00fff5, #ff2e88)",
               boxShadow: "0 0 20px rgba(255,46,136,0.4)",
@@ -252,46 +230,4 @@ export default function ContactSection({
   );
 }
 
-/*
-=====================================================================
-APP.JSX WIRING — add Contact as the final section, with its own hue
-=====================================================================
 
-import ContactSection from "./components/ContactSection";
-
-const sectionIds = ["home", "about", "projects", "contact"];
-const hueMap = { home: 0, about: -15, projects: -35, contact: 20 };
-
-...
-
-<AboutSection />
-<ProjectsSection />
-<ContactSection
-  email="you@example.com"
-  phone="+94 71 234 5678"
-  socials={{
-    github: "https://github.com/yourhandle",
-    linkedin: "https://linkedin.com/in/yourhandle",
-    twitter: "https://x.com/yourhandle",
-  }}
-/>
-
-That +20deg hue gives Contact a slightly warmer, more gold/orange
-cast than Home — a subtle shift, same mechanism as the Projects
-section transition you already have via SynthwaveBackground's `hue`
-prop and useActiveSection. Nothing else needs to change; the existing
-1.2s CSS transition on the background handles the easing.
-
-=====================================================================
-NOTES
-=====================================================================
-- Email + phone are also plain mailto:/tel: links up top, so contact
-  still works even before you finish the EmailJS setup.
-- Social icons are hand-drawn inline SVGs — zero extra icon library
-  dependency. Add more by following the same pattern in the `icons`
-  object (e.g. Instagram, Dribbble).
-- Form validates required fields natively via the `required` attribute
-  before it ever calls EmailJS.
-- EmailJS's free tier caps at 200 emails/month, which is plenty for a
-  portfolio contact form.
-*/

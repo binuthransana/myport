@@ -25,15 +25,15 @@ const placeholderProjects = [
     title: "Mini Satellite Antenna Rotator (MSAR)",
     description: "The MSAR is a cost-effective, automated hardware system that tracks moving satellites in real-time, solving the tedious manual adjustments and signal drops of static setups.",
     tags: ["Hardware", "Arduino"],
-    link: "https://msar-tracker.firebaseapp.com/",
+    link: "#",
   },
 
   {
-    title: "Mini Satellite Antenna Rotator (MSAR)",
-    description: "The MSAR is a cost-effective, automated hardware system that tracks moving satellites in real-time, solving the tedious manual adjustments and signal drops of static setups.",
-    tags: ["Hardware", "Arduino"],
-    link: "https://msar-tracker.firebaseapp.com/",
-  }
+    title: "Pantry Chef ADK",
+    description: "An intelligent kitchen assistant that helps manage pantry inventory and generates recipes based on available ingredients.",
+    tags: ["Python", "ADK"], // Update these tags to match your actual tech stack!
+    link: "https://github.com/binuthransana/Pantry-Chef/settings", 
+  },
 
 
 ];

@@ -17,7 +17,7 @@ import React from "react";
  * REQUIRES a cursive Google Font — add this ONE line to the <head>
  * of your public/index.html (see bottom of file for exact snippet).
  */
-export default function WelcomeCursive({ text = "Welcome", delay = 0 }) {
+export default function WelcomeCursive({ text = "I am", delay = 0 }) {
   return (
     <div className="relative inline-block">
       <h1

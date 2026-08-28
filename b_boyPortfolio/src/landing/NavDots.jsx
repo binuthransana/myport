@@ -1,28 +1,6 @@
 import React from "react";
 
-/**
- * NavDots
- * A modern right-side scroll-spy navigation: hollow neon dots that
- * morph into a glowing vertical pill when active, with a label that
- * slides in on hover and a faint connecting track line behind them.
- *
- * Replaces a plain "filled circle that scales up" dot nav with a
- * more considered, modern interaction.
- *
- * Usage in App.jsx — reuse the same sectionIds/activeId you already
- * have from useActiveSection, no need to duplicate the array:
- *
- *   <NavDots sectionIds={sectionIds} activeId={activeId} />
- *
- * Optional: pass custom display labels (defaults to a capitalized
- * version of each id):
- *
- *   <NavDots
- *     sectionIds={sectionIds}
- *     activeId={activeId}
- *     labels={{ home: "Home", about: "About Me" }}
- *   />
- */
+
 export default function NavDots({
   sectionIds = ["home", "about", "skills", "projects", "contact"],
   activeId,

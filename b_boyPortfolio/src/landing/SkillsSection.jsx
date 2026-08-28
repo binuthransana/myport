@@ -114,43 +114,4 @@ export default function SkillsSection({ skills = placeholderSkills }) {
   );
 }
 
-/*
-=====================================================================
-NOTES
-=====================================================================
-- Same visual language as ProjectsSection: translucent dark cards,
-  pink border that turns cyan + glows on hover, lifts slightly.
-- Proficiency bars start at 0% and animate to their target width only
-  once the section is scrolled into view (via IntersectionObserver),
-  so the fill feels like a reveal rather than happening off-screen
-  before the user gets there. Fires once, not on every scroll.
-- `category` is optional per-skill — omit it on any entry to hide
-  that pill for that card.
-- Swap `placeholderSkills` for your real data via the `skills` prop.
 
-=====================================================================
-APP.JSX WIRING — typical order: Home, About, Skills, Projects, Contact
-=====================================================================
-
-import SkillsSection from "./components/SkillsSection";
-
-const sectionIds = ["home", "about", "skills", "projects", "contact"];
-const hueMap = { home: 0, about: -15, skills: -25, projects: -35, contact: 20 };
-
-...
-
-<AboutSection />
-<SkillsSection
-  skills={[
-    { name: "React", level: 90, category: "Frontend" },
-    { name: "Tailwind CSS", level: 85, category: "Frontend" },
-    // ...your real skills
-  ]}
-/>
-<ProjectsSection />
-<ContactSection ... />
-
-Also add "Skills" to your nav links so it lines up with the new
-section id — useActiveSection and the background hue shift pick it
-up automatically, same as your other sections.
-*/

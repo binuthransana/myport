@@ -11,6 +11,10 @@ import ContactSection from './landing/ContactSection';
 import CursorTrail from './landing/CursorTrail';
 import NavDots from './landing/NavDots';
 import Footer from './landing/Footer';
+import myPortraitImage from './assets/image.png';
+
+// 1. Define the array for both the hook and the NavDots
+const sectionIds = ['home', 'about', 'skills', 'projects', 'contact'];
 
 // Define your color shifts here! 
 const sectionHues = {
@@ -41,22 +45,21 @@ function App() {
 
       {loading && <LoadingScreen onFinish={() => setLoading(false)} />}
 
-      <div className={`relative z-10 flex flex-col items-center min-h-screen transition-opacity space-y-6 -mt-6 px-4 sm:px-8 pb-12 duration-700 ${loading ? "opacity-0" : "opacity-100"}`}>
-        
+      {/* 2. The Inner Snap-Scroll Container */}
+      <div className={`relative z-10 h-screen w-full overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth transition-opacity duration-700 ${loading ? "opacity-0" : "opacity-100"}`}>        
         <Header />
 
-        {/* =========================================
-            RIGHT-SIDE DOT NAVIGATION
-            ========================================= */}
-        <NavDots/>
+        
+       
+        <NavDots activeId={activeSection} sectionIds={sectionIds} />
         
         {/* HERO SECTION */}
-        <section id="home" className="flex flex-col items-center justify-center min-h-screen w-full text-center space-y-6 pt-24">
-          <h2 className="font-airstrike text-synth-cyan text-2xl tracking-[0.3em] uppercase">
-            Welcome 
+        <section id="home" className="snap-start flex flex-col items-center justify-center min-h-screen w-full text-center space-y-6 pt-24">
+          <h2 className="-translate-y-9 font-airstrike text-synth-cyan text-2xl tracking-[0.3em] uppercase">
+            Hi! I'm 
           </h2>
           
-          <h1 className="font-airstrike text-6xl md:text-8xl mb-2 z-10 tracking-wide drop-shadow-2xl bg-gradient-to-b from-synth-yellow to-synth-pink text-transparent bg-clip-text italic">
+          <h1 className="-translate-y-6 font-airstrike text-6xl md:text-8xl mb-2 z-10 tracking-wide drop-shadow-2xl bg-linear-to-b from-synth-yellow to-synth-pink text-transparent bg-clip-text italic">
             BINUTH RANSANA
           </h1>
           
@@ -65,26 +68,28 @@ function App() {
         </section>
         
         {/* ABOUT SECTION */}
-        <AboutSection/>
+        <div className="snap-start"><AboutSection photo={myPortraitImage}/></div>
 
         {/* SKILLS SECTION */}
-        <SkillsSection />
+        <div className="snap-start"><SkillsSection /></div>
 
         {/* PROJECTS SECTION */}
-        <ProjectsSection />
+        <div className="snap-start"><ProjectsSection /></div>
 
         {/* CONTACT SECTION */}
-        <ContactSection 
-          email="binuthran@gmail.com"
-          phone="+94 71 571 1322"
-          socials={{
-            github: "https://github.com/yourhandle",
-            linkedin: "https://linkedin.com/in/yourhandle",
-            twitter: "https://x.com/yourhandle",
-          }}
-        /> 
-        <Footer/>
-
+        <div className="snap-start">
+          <ContactSection 
+            email="binuthran@gmail.com"
+            phone="+94 71 571 1322"
+            socials={{
+              github: "https://github.com/yourhandle",
+              linkedin: "https://linkedin.com/in/yourhandle",
+              twitter: "https://x.com/yourhandle",
+            }}
+          />
+          <Footer/>
+        </div>
+        
       </div>
     </div>
   );
